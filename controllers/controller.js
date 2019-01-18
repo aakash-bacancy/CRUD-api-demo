@@ -1,4 +1,5 @@
 const instance=require('../models/model');
+
 exports.test=function(req,res){
 	res.send('INMESSIONANTE');
 };
@@ -25,6 +26,7 @@ exports.read=function(req,res){
 		res.send(userdata);
 	});
 };
+//update operation
 exports.update=function(req,res){
 	t=req.body.find_name;
 	temp={name:t};
@@ -36,6 +38,7 @@ exports.update=function(req,res){
 		res.send("value updated");
 	});
 };
+//delete operation
 exports.delete=function(req,res){
 	t=req.body.name;
 	temp={name:t};
