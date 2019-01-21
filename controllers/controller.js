@@ -19,23 +19,24 @@ exports.create=function(req,res){
 };
 //read operation
 exports.read=function(req,res){
-	t=req.body.name;
-	temp={name:t};
+	
+	temp={name:req.query.name};
 	instance.find(temp,function(err,userdata){
 		if(err){return next(err);}
+		//console.log(userdata);
 		res.send(userdata);
 	});
 };
 //update operation
 exports.update=function(req,res){
-	t=req.body.find_name;
+	t=req.body.name;
 	temp={name:t};
 	instance.findOneAndUpdate(temp,
 		{$set:{name:req.body.name,
 			jobtype:req.body.type,
 			desk:req.body.no}},function(err,data){
 		if(err){return next(err);}
-		res.send("value updated");
+		res.send(data);
 	});
 };
 //delete operation
@@ -44,7 +45,8 @@ exports.delete=function(req,res){
 	temp={name:t};
 	instance.findOneAndDelete(temp,function(err,data){
 		if(err){return next(err);}
-		res.send("document deleted");
+		console.log(data);
+		res.send(data);
 	});
 
 };
